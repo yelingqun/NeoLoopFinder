@@ -271,7 +271,10 @@ class Triangle(Peakachu):
         self.r = self.res
 
         loops = Loops(loop_fil)
-        self.loops = loops.loops[self.assembly_ID]
+        try:
+            self.loops = loops.loops[self.assembly_ID]
+        except:
+            return 0
         
         Donuts = {}
         Bool = np.zeros(self.matrix.shape, dtype=bool)
@@ -327,7 +330,11 @@ class Triangle(Peakachu):
         
         self.heatmap_ax.set_xlim(self.hx.min(), self.hx.max())
         self.heatmap_ax.set_ylim(self.hy.min(), self.hy.max())
-        return lx.size
+
+        if lx.size is None:
+            return 0
+        else:
+            return lx.size
     
     def plot_DI(self, ws=2000000, pos_color='#FB9A99', neg_color='#A6CEE3', y_axis_offset=0.01,
         data_range_size=7):
