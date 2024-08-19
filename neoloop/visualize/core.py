@@ -486,12 +486,12 @@ class Triangle(Peakachu):
         
         chrom_ax.axis('off')
     
-    def plot_genes(self, species='human', release=97, filter_=None,
+    def plot_genes(self, species='human', release=97, filter_=None, ref=None, 
         color='#999999', border_color='#999999', fontsize=7, labels='auto',
         style='flybase', global_max_row=False, label_aligns={}):
 
         genes = Genes(self.bounds, self.orients, self.res, species=species, release=release,
-                filter_=filter_)
+                filter_=filter_, ref=ref)
         _wk = plotGenes(genes.file_handler, color=color, fontsize=fontsize, labels=labels,
                 style=style, global_max_row=global_max_row)
         

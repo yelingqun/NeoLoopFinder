@@ -109,11 +109,11 @@ class Genes(object):
     Map reference genes onto a new assembly. 
     """
     def __init__(self, bounds, orients, res=10000, default_chrom='chrN',
-        species='human', release=97, filter_=None):
-        
-        ref = EnsemblRelease(release, species=species)
-        ref.download()
-        ref.index()
+        species='human', release=97, filter_=None, ref=None):
+        if ref == None:
+            ref = EnsemblRelease(release, species=species)
+            ref.download()
+            ref.index()
         self.ref = ref
         if not filter_ is None:
             # a pre-defined gene list, such as cancer-related genes
